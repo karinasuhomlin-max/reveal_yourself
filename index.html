@@ -19,16 +19,20 @@
                 extend: {
                     colors: {
                         brand: {
-                            bg: '#F9F8F6', // Soft beige bg
-                            primary: '#D4A373', // Gold/Sand accent
-                            secondary: '#A8C0D2', // Soft blue (like the pants)
-                            dark: '#2D2A26', // Dark text
-                            rose: '#E5989B' // Soft pink accent
+                            bg: '#F9F8F6',
+                            primary: '#D4A373',
+                            secondary: '#A8C0D2',
+                            dark: '#2D2A26',
+                            // Champagne Gold (#E6C89C)
+                            rose: '#E6C89C' 
                         }
                     },
                     fontFamily: {
                         sans: ['Manrope', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft-glow': '0 0 20px rgba(230, 200, 156, 0.4)',
                     }
                 }
             }
@@ -36,7 +40,7 @@
     </script>
 
     <style>
-        /* Custom Animation Utilities */
+        /* Анимации появления */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -53,8 +57,25 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
+        /* Hero Glass Dark Card */
+        .glass-dark {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Soft Gold Glow */
+        .text-glow {
+            color: #FFFDF5; 
+            text-shadow: 
+                0 0 15px rgba(230, 200, 156, 0.5),
+                0 0 35px rgba(230, 200, 156, 0.25);
+        }
+
         .text-gradient {
-            background: linear-gradient(90deg, #D4A373, #E5989B);
+            background: linear-gradient(90deg, #D4A373, #E6C89C);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -63,53 +84,78 @@
 <body class="bg-brand-bg text-brand-dark font-sans antialiased overflow-x-hidden">
 
     <!-- HERO SECTION -->
-    <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20 lg:pt-0 lg:pb-0">
-        <!-- Abstract Background Shapes -->
-        <div class="absolute top-0 right-0 w-2/3 h-full bg-brand-secondary/10 rounded-l-full blur-3xl -z-10 transform translate-x-1/3"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl -z-10 transform -translate-x-1/3"></div>
+    <!-- h-[85vh] crops the bottom on mobile to hide legs -->
+    <header class="relative h-[85vh] md:h-screen min-h-[600px] flex items-center overflow-hidden">
+        
+        <!-- Background Image -->
+        <!-- 
+           MOBILE CHANGES:
+           1. scale-[1.15]: Zooms in 15% to make it intimate/portrait-like.
+           2. origin-top: Anchors the zoom to the top so the face stays in frame, and legs are pushed further down/out.
+           3. md:scale-100 md:origin-center: Resets everything for desktop.
+        -->
+        <img src="pic_002.JPG" alt="Background" class="absolute inset-0 w-full h-full object-cover object-top scale-[1.15] origin-top md:scale-100 md:origin-center md:object-center z-0">
+        
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent z-10 sm:bg-gradient-to-t sm:from-black/90 sm:to-black/30 md:bg-gradient-to-r"></div>
 
-        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <!-- Text Content -->
-            <div class="reveal order-2 lg:order-1 text-center lg:text-left">
-                <span class="inline-block py-1 px-4 rounded-full bg-white border border-brand-primary/20 text-brand-primary font-semibold text-sm mb-6 tracking-wide uppercase animate-pulse">
-                    Мини-курс
-                </span>
-                <h1 class="font-serif text-5xl lg:text-7xl font-bold leading-tight mb-6">
-                    Раскрой себя <br>
-                    <span class="text-gradient italic">по-новому:</span>
-                    <br>Проявляйся в легкости!
-                </h1>
+        <!-- Content Container -->
+        <div class="container mx-auto px-6 relative z-20 h-full flex flex-col md:justify-center">
+            
+            <!-- Wrapper for alignment separation -->
+            <!-- pt-16 keeps text high, pb-28 keeps card lifted -->
+            <div class="flex flex-col justify-between h-full pt-16 pb-28 md:block md:h-auto md:pt-0 md:pb-0 max-w-2xl reveal active">
                 
-                <!-- Price Block -->
-                <div class="flex items-center justify-center lg:justify-start gap-4 mb-8">
-                    <span class="text-4xl font-bold text-brand-dark">390 грн</span>
-                    <span class="text-xl text-gray-400 line-through">3490 грн</span>
+                <!-- TOP BLOCK: Text -->
+                <div>
+                    <!-- Tag: Авторский курс -->
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-white/5 backdrop-blur-md border border-brand-rose/40 text-brand-rose font-medium text-xs md:text-sm mb-6 tracking-widest uppercase shadow-lg">
+                        <i class="fas fa-star text-[10px] mr-2 align-middle"></i>Авторский курс
+                    </span>
+
+                    <!-- Headline -->
+                    <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-0 md:mb-8 text-white drop-shadow-xl">
+                        Раскрой себя <br>
+                        <span class="text-brand-rose italic drop-shadow-lg" style="text-shadow: 0 0 25px rgba(230,200,156,0.25);">по-новому:</span> <br>
+                        Проявляйся в легкости!
+                    </h1>
                 </div>
 
-                <a href="#payment" class="inline-block bg-brand-dark text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-brand-primary transition-all duration-300 hover:scale-105 hover:shadow-brand-primary/30">
-                    Получить курс
-                </a>
-            </div>
+                <!-- BOTTOM BLOCK: Price & CTA -->
+                <div class="w-full">
+                     <div class="glass-dark p-6 md:p-8 rounded-3xl inline-block max-w-full md:max-w-[480px] w-full border-t border-white/20">
+                        <div class="flex items-end justify-between gap-4 mb-6 border-b border-white/10 pb-5">
+                            <div>
+                                <p class="text-gray-400 text-xs uppercase tracking-wider mb-1 font-medium">Специальное предложение</p>
+                                <!-- Price with Gold Glow -->
+                                <span class="text-6xl md:text-7xl font-bold text-glow block leading-none tracking-tight">
+                                    390 <span class="text-2xl md:text-3xl align-top opacity-80 font-sans font-light text-brand-rose ml-1">грн</span>
+                                </span>
+                            </div>
+                            <div class="text-right pb-1 flex flex-col items-end">
+                                <span class="block text-gray-500 text-lg line-through decoration-gray-600 decoration-1 mb-1">3490 грн</span>
+                                <!-- Badge -->
+                                <span class="text-xs font-bold text-brand-rose bg-brand-rose/10 border border-brand-rose/20 px-3 py-1 rounded-lg inline-block">
+                                    ВЫГОДА -89%
+                                </span>
+                            </div>
+                        </div>
 
-            <!-- Image Content -->
-            <div class="reveal order-1 lg:order-2 relative group">
-                <div class="absolute inset-0 bg-brand-primary rounded-[3rem] rotate-6 opacity-20 transition-transform duration-500 group-hover:rotate-12"></div>
-                <!-- Using pic_002.JPG (Laptop + Coffee) for Hero as it fits "Course" vibe perfectly -->
-                <img src="pic_002.JPG" alt="Карина Сухомлин" class="relative w-full max-w-md mx-auto rounded-[3rem] shadow-2xl object-cover aspect-[3/4] transition-transform duration-500 group-hover:-translate-y-2">
-                
-                <!-- Floating Badge -->
-                <div class="absolute -bottom-6 -left-6 lg:left-10 bg-white p-4 rounded-xl shadow-xl animate-bounce hidden md:block">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-green-100 p-2 rounded-full text-green-600">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs text-gray-500">Доступ сразу</p>
-                            <p class="font-bold text-sm">после оплаты</p>
-                        </div>
+                        <!-- CTA Button -->
+                        <a href="#payment" aria-label="Получить курс" class="group relative w-full flex items-center justify-center gap-3 bg-brand-rose text-brand-dark hover:bg-white hover:text-brand-rose text-center py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-lg hover:shadow-soft-glow transform hover:-translate-y-1">
+                            <span>Получить курс</span>
+                            <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+                        </a>
                     </div>
                 </div>
+
             </div>
+        </div>
+
+        <!-- Scroll Indicator (Desktop Only) -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 text-brand-rose/70 animate-bounce hidden md:block">
+            <span class="text-xs uppercase tracking-widest mb-2 block text-center">Листай</span>
+            <i class="fas fa-chevron-down text-xl"></i>
         </div>
     </header>
 
@@ -124,7 +170,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Card 1 -->
             <div class="reveal glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 bg-white">
-                <div class="w-14 h-14 bg-rose-100 rounded-full flex items-center justify-center text-brand-rose text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <div class="w-14 h-14 bg-[#FAF3E8] rounded-full flex items-center justify-center text-brand-rose text-2xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fas fa-heart"></i>
                 </div>
                 <p class="text-gray-700 leading-relaxed">
@@ -134,7 +180,7 @@
 
             <!-- Card 2 -->
             <div class="reveal glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 bg-white">
-                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-brand-secondary text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-secondary text-2xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fas fa-fingerprint"></i>
                 </div>
                 <p class="text-gray-700 leading-relaxed">
@@ -144,7 +190,7 @@
 
             <!-- Card 3 -->
             <div class="reveal glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 bg-white">
-                <div class="w-14 h-14 bg-amber-100 rounded-full flex items-center justify-center text-amber-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <div class="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-amber-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fas fa-mountain"></i>
                 </div>
                 <p class="text-gray-700 leading-relaxed">
@@ -154,7 +200,7 @@
 
             <!-- Card 4 -->
             <div class="reveal glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 bg-white">
-                <div class="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <div class="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fas fa-bullseye"></i>
                 </div>
                 <p class="text-gray-700 leading-relaxed">
@@ -171,7 +217,7 @@
     </section>
 
     <!-- TARGET AUDIENCE -->
-    <section class="py-20 bg-brand-dark text-white rounded-[3rem] mx-4 my-10">
+    <section class="py-20 bg-brand-dark text-white rounded-[3rem] mx-4 my-10 shadow-2xl">
         <div class="container mx-auto px-6">
             <h2 class="font-serif text-3xl lg:text-5xl font-bold text-center mb-16 reveal">
                 Кому подходит этот курс?
@@ -212,7 +258,7 @@
                 </a>
                 <div class="mt-4 text-gray-400 text-sm">
                     <span class="line-through mr-2">3490 грн</span>
-                    <span class="text-brand-primary font-bold text-lg">390 грн</span>
+                    <span class="text-brand-rose font-bold text-lg">390 грн</span>
                 </div>
             </div>
         </div>
@@ -253,14 +299,14 @@
                     </li>
                 </ul>
 
-                <div class="mt-8 p-6 bg-brand-bg border-l-4 border-brand-primary rounded-r-xl">
+                <div class="mt-8 p-6 bg-brand-bg border-l-4 border-brand-rose rounded-r-xl">
                     <p class="italic text-gray-600 font-serif text-lg">
                         "Верю, что личный бренд начинается не с визуала, а с внутренней опоры и честности с собой."
                     </p>
                 </div>
 
                 <div class="mt-10">
-                    <a href="#payment" class="inline-block bg-brand-dark text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-brand-primary transition-all duration-300">
+                    <a href="#payment" class="inline-block bg-brand-dark text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-brand-rose transition-all duration-300">
                         Иду к тебе на курс
                     </a>
                 </div>
@@ -316,7 +362,7 @@
                 </div>
 
                 <!-- Level 4 -->
-                <div class="reveal group bg-brand-bg hover:bg-white p-6 rounded-2xl border border-transparent hover:border-brand-primary/30 transition-all duration-300 shadow-sm hover:shadow-lg">
+                <div class="reveal group bg-brand-bg hover:bg-white p-6 rounded-2xl border border-transparent hover:border-brand-rose/30 transition-all duration-300 shadow-sm hover:shadow-lg">
                     <div class="flex flex-col md:flex-row gap-4">
                         <div class="flex-shrink-0">
                             <span class="inline-block bg-brand-rose text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Уровень 4</span>
@@ -361,7 +407,7 @@
                     Хочу на этот курс
                 </a>
                 <div class="mt-4 text-gray-500 font-medium">
-                    Цена всего <span class="text-brand-dark font-bold text-xl">390 грн</span>
+                    Цена всего <span class="text-brand-rose font-bold text-xl">390 грн</span>
                 </div>
             </div>
         </div>
@@ -402,15 +448,15 @@
                 </div>
                 <!-- Review 7 -->
                 <div class="reveal break-inside-avoid">
-                    <img src="review_011.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
+                    <img src="review_010.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
                 </div>
                 <!-- Review 8 -->
                 <div class="reveal break-inside-avoid">
-                    <img src="review_09.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
+                    <img src="review_011.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
                 </div>
                 <!-- Review 9 -->
                 <div class="reveal break-inside-avoid">
-                    <img src="review_010.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
+                    <img src="review_012.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
                 </div>
             </div>
         </div>
@@ -420,25 +466,25 @@
     <footer id="payment" class="relative py-24 bg-brand-dark text-white overflow-hidden">
         <!-- Background Img Overlay -->
         <div class="absolute inset-0 z-0 opacity-20">
-            <!-- Using the casual selfie pic_003.JPG for a personal goodbye feel -->
-            <img src="pic_003.JPG" class="w-full h-full object-cover blur-sm" alt="Background">
+            <!-- Using the casual selfie pic_003.JPGfor a personal goodbye feel -->
+            <img src="pic_004.JPG" class="w-full h-full object-cover blur-sm" alt="Background">
         </div>
         <div class="absolute inset-0 bg-black/60 z-0"></div>
 
         <div class="container mx-auto px-6 relative z-10 text-center">
             <h2 class="font-serif text-3xl lg:text-5xl font-bold mb-8 leading-tight">
                 Разреши себе проявляться <br>так, как хочешь ты,<br>
-                <span class="text-brand-primary italic">а не как диктует общество</span>
+                <span class="text-brand-rose italic">а не как диктует общество</span>
             </h2>
 
             <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl inline-block max-w-lg w-full border border-white/20">
                 <p class="text-gray-300 mb-2">Стоимость участия</p>
                 <div class="flex justify-center items-center gap-4 mb-8">
                     <span class="text-gray-400 text-2xl line-through decoration-brand-rose">3490 грн</span>
-                    <span class="text-5xl font-bold text-white">390 грн</span>
+                    <span class="text-5xl font-bold text-glow">390 грн</span>
                 </div>
                 
-                <button class="w-full bg-brand-primary text-white py-4 rounded-full text-xl font-bold shadow-lg hover:bg-white hover:text-brand-dark transition-all duration-300 transform hover:scale-105">
+                <button class="w-full bg-brand-rose text-brand-dark py-4 rounded-full text-xl font-bold shadow-lg hover:bg-white hover:text-brand-rose transition-all duration-300 transform hover:scale-105">
                     Оплатить и получить доступ
                 </button>
                 <p class="mt-4 text-xs text-gray-400">Безопасная оплата картой любого банка</p>
