@@ -56,33 +56,29 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* 
-           ИСПРАВЛЕНИЕ: ЖЕСТКОЕ РАЗДЕЛЕНИЕ СТИЛЕЙ
-           Mobile vs Desktop
-        */
-
-        /* Стили по умолчанию (они же Mobile в Tailwind logic, но мы усилим их) */
+        /* Базовый стиль */
         .glass-dark {
-            /* Базовые стили */
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         /* 
-           !!! ВАЖНО: МОБИЛЬНАЯ ВЕРСИЯ (Экран уже 768px)
-           Принудительно делаем прозрачным
+           !!! МОБИЛЬНАЯ ВЕРСИЯ (Экран уже 768px)
+           Сделано МАКСИМАЛЬНО прозрачно
         */
         @media (max-width: 767px) {
             .glass-dark {
-                background: rgba(0, 0, 0, 0.15) !important; /* Очень прозрачный, почти нет цвета */
-                backdrop-filter: blur(5px) !important;      /* Слабый блюр, чтобы было видно лицо */
-                -webkit-backdrop-filter: blur(5px) !important;
-                box-shadow: none !important;                /* Убираем тень, чтобы не было "грязи" */
-                border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Тонкая светлая рамка */
+                /* 5% непрозрачности - почти полностью прозрачно */
+                background: rgba(0, 0, 0, 0.05) !important; 
+                /* Минимальный блюр, чтобы фото было четким */
+                backdrop-filter: blur(3px) !important;      
+                -webkit-backdrop-filter: blur(3px) !important;
+                box-shadow: none !important;                
+                border: 1px solid rgba(255, 255, 255, 0.1) !important; 
             }
         }
 
         /* 
-           !!! ВАЖНО: ДЕСКТОП ВЕРСИЯ (Экран шире 768px)
+           !!! ДЕСКТОП ВЕРСИЯ (Экран шире 768px)
            Оставляем плотный темный фон
         */
         @media (min-width: 768px) {
@@ -141,10 +137,6 @@
 
                 <!-- BOTTOM: Card -->
                 <div class="w-full">
-                     <!-- 
-                        Класс glass-dark теперь управляется жесткими медиа-запросами в <style>.
-                        p-5 on mobile, p-8 on desktop.
-                     -->
                      <div class="glass-dark p-5 md:p-8 rounded-3xl inline-block max-w-full md:max-w-[480px] w-full border-t border-white/20">
                         <div class="flex items-end justify-between gap-4 mb-6 border-b border-white/10 pb-5">
                             <div>
@@ -418,7 +410,7 @@
                 <div id="reviews-slider" class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth pb-4 px-1">
                     
                     <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
-                        <img src="pic_001.JPG" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                        <img src="review_01.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
                     </div>
                     <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
                         <img src="review_02.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
