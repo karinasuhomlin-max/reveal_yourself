@@ -23,7 +23,6 @@
                             primary: '#D4A373',
                             secondary: '#A8C0D2',
                             dark: '#2D2A26',
-                            // Champagne Gold (#E6C89C)
                             rose: '#E6C89C' 
                         }
                     },
@@ -57,7 +56,6 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Hero Glass Dark Card */
         .glass-dark {
             background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(16px);
@@ -66,7 +64,6 @@
             box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
         }
 
-        /* Soft Gold Glow */
         .text-glow {
             color: #FFFDF5; 
             text-shadow: 
@@ -79,41 +76,31 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
     </style>
 </head>
 <body class="bg-brand-bg text-brand-dark font-sans antialiased overflow-x-hidden">
 
     <!-- HERO SECTION -->
-    <!-- h-[85vh] crops the bottom on mobile to hide legs -->
     <header class="relative h-[85vh] md:h-screen min-h-[600px] flex items-center overflow-hidden">
-        
-        <!-- Background Image -->
-        <!-- 
-           MOBILE CHANGES:
-           1. scale-[1.15]: Zooms in 15% to make it intimate/portrait-like.
-           2. origin-top: Anchors the zoom to the top so the face stays in frame, and legs are pushed further down/out.
-           3. md:scale-100 md:origin-center: Resets everything for desktop.
-        -->
         <img src="pic_002.JPG" alt="Background" class="absolute inset-0 w-full h-full object-cover object-top scale-[1.15] origin-top md:scale-100 md:origin-center md:object-center z-0">
-        
-        <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent z-10 sm:bg-gradient-to-t sm:from-black/90 sm:to-black/30 md:bg-gradient-to-r"></div>
 
-        <!-- Content Container -->
         <div class="container mx-auto px-6 relative z-20 h-full flex flex-col md:justify-center">
-            
-            <!-- Wrapper for alignment separation -->
-            <!-- pt-16 keeps text high, pb-28 keeps card lifted -->
             <div class="flex flex-col justify-between h-full pt-16 pb-28 md:block md:h-auto md:pt-0 md:pb-0 max-w-2xl reveal active">
-                
-                <!-- TOP BLOCK: Text -->
                 <div>
-                    <!-- Tag: Авторский курс -->
                     <span class="inline-block py-1.5 px-4 rounded-full bg-white/5 backdrop-blur-md border border-brand-rose/40 text-brand-rose font-medium text-xs md:text-sm mb-6 tracking-widest uppercase shadow-lg">
                         <i class="fas fa-star text-[10px] mr-2 align-middle"></i>Авторский курс
                     </span>
-
-                    <!-- Headline -->
                     <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-0 md:mb-8 text-white drop-shadow-xl">
                         Раскрой себя <br>
                         <span class="text-brand-rose italic drop-shadow-lg" style="text-shadow: 0 0 25px rgba(230,200,156,0.25);">по-новому:</span> <br>
@@ -121,54 +108,44 @@
                     </h1>
                 </div>
 
-                <!-- BOTTOM BLOCK: Price & CTA -->
                 <div class="w-full">
                      <div class="glass-dark p-6 md:p-8 rounded-3xl inline-block max-w-full md:max-w-[480px] w-full border-t border-white/20">
                         <div class="flex items-end justify-between gap-4 mb-6 border-b border-white/10 pb-5">
                             <div>
                                 <p class="text-gray-400 text-xs uppercase tracking-wider mb-1 font-medium">Специальное предложение</p>
-                                <!-- Price with Gold Glow -->
                                 <span class="text-6xl md:text-7xl font-bold text-glow block leading-none tracking-tight">
                                     390 <span class="text-2xl md:text-3xl align-top opacity-80 font-sans font-light text-brand-rose ml-1">грн</span>
                                 </span>
                             </div>
                             <div class="text-right pb-1 flex flex-col items-end">
                                 <span class="block text-gray-500 text-lg line-through decoration-gray-600 decoration-1 mb-1">3490 грн</span>
-                                <!-- Badge -->
                                 <span class="text-xs font-bold text-brand-rose bg-brand-rose/10 border border-brand-rose/20 px-3 py-1 rounded-lg inline-block">
                                     ВЫГОДА -89%
                                 </span>
                             </div>
                         </div>
-
-                        <!-- CTA Button -->
                         <a href="#payment" aria-label="Получить курс" class="group relative w-full flex items-center justify-center gap-3 bg-brand-rose text-brand-dark hover:bg-white hover:text-brand-rose text-center py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-lg hover:shadow-soft-glow transform hover:-translate-y-1">
                             <span>Получить курс</span>
                             <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
-
-        <!-- Scroll Indicator (Desktop Only) -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 text-brand-rose/70 animate-bounce hidden md:block">
             <span class="text-xs uppercase tracking-widest mb-2 block text-center">Листай</span>
             <i class="fas fa-chevron-down text-xl"></i>
         </div>
     </header>
 
-    <!-- PROMISE SECTION (Cards) -->
+    <!-- PROMISE SECTION -->
     <section class="py-20 container mx-auto px-6">
         <div class="text-center mb-16 reveal">
             <h2 class="font-serif text-3xl lg:text-4xl font-bold mb-4">
                 За 7 практических уроков и 3 дня <br> <span class="text-brand-primary italic">ты поймешь:</span>
             </h2>
         </div>
-
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Card 1 -->
             <div class="reveal glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 bg-white">
                 <div class="w-14 h-14 bg-[#FAF3E8] rounded-full flex items-center justify-center text-brand-rose text-2xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fas fa-heart"></i>
@@ -177,8 +154,6 @@
                     Как проявляться и привлекать <b class="text-brand-dark">своих клиентов</b>, которые останутся с тобой надолго.
                 </p>
             </div>
-
-            <!-- Card 2 -->
             <div class="reveal glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 bg-white">
                 <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-secondary text-2xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fas fa-fingerprint"></i>
@@ -187,8 +162,6 @@
                     Как выстроить <b class="text-brand-dark">узнаваемый личный бренд</b>, который транслирует твои смыслы.
                 </p>
             </div>
-
-            <!-- Card 3 -->
             <div class="reveal glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 bg-white">
                 <div class="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-amber-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fas fa-mountain"></i>
@@ -197,8 +170,6 @@
                     Как выстроить <b class="text-brand-dark">мощную опору в себе</b>, которая не даст сдаться.
                 </p>
             </div>
-
-            <!-- Card 4 -->
             <div class="reveal glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 bg-white">
                 <div class="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fas fa-bullseye"></i>
@@ -208,7 +179,6 @@
                 </p>
             </div>
         </div>
-
         <div class="mt-12 text-center reveal">
             <a href="#payment" class="inline-block bg-brand-primary text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-brand-dark transition-all duration-300">
                 Получить курс за 390 грн
@@ -222,9 +192,7 @@
             <h2 class="font-serif text-3xl lg:text-5xl font-bold text-center mb-16 reveal">
                 Кому подходит этот курс?
             </h2>
-
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Item 1 -->
                 <div class="reveal bg-white/5 p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
                     <div class="text-4xl mb-4">🤯</div>
                     <h3 class="text-xl font-bold mb-3 text-brand-primary">Хаос в блоге</h3>
@@ -232,8 +200,6 @@
                         Для специалистов, которые устали вести блог хаотично и не понимают, с чего начать, как и что делать.
                     </p>
                 </div>
-
-                <!-- Item 2 -->
                 <div class="reveal bg-white/5 p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
                     <div class="text-4xl mb-4">🐢</div>
                     <h3 class="text-xl font-bold mb-3 text-brand-primary">Синдром отложенной жизни</h3>
@@ -241,8 +207,6 @@
                         Для тех, кто чувствует, что работает «впустую», сомневается в себе и откладывает продвижение «на потом».
                     </p>
                 </div>
-
-                <!-- Item 3 -->
                 <div class="reveal bg-white/5 p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
                     <div class="text-4xl mb-4">🕊️</div>
                     <h3 class="text-xl font-bold mb-3 text-brand-primary">Поиск легкости</h3>
@@ -251,7 +215,6 @@
                     </p>
                 </div>
             </div>
-
             <div class="mt-12 text-center reveal">
                 <a href="#payment" class="inline-block bg-white text-brand-dark px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-brand-primary hover:text-white transition-all duration-300">
                     Узнать себя и забрать курс
@@ -267,19 +230,15 @@
     <!-- ABOUT EXPERT -->
     <section class="py-20 container mx-auto px-6 overflow-hidden">
         <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-            <!-- Image (pic_001.JPG - Portrait) -->
             <div class="reveal w-full lg:w-1/2 relative">
                 <div class="absolute inset-0 bg-brand-secondary/30 rounded-3xl transform translate-x-4 translate-y-4"></div>
                 <img src="pic_001.JPG" alt="Карина Сухомлин" class="relative rounded-3xl shadow-2xl w-full object-cover">
             </div>
-
-            <!-- Content -->
             <div class="reveal w-full lg:w-1/2">
                 <h2 class="font-serif text-4xl lg:text-5xl font-bold mb-8">
                     Кто я?
                 </h2>
                 <h3 class="text-2xl font-semibold mb-6 text-brand-primary">Карина Сухомлин</h3>
-                
                 <ul class="space-y-4">
                     <li class="flex items-start gap-4">
                         <i class="fas fa-check-circle text-brand-secondary mt-1 text-xl"></i>
@@ -298,13 +257,11 @@
                         <p class="text-lg text-gray-700">Создательница программы <b>БОЛЬШАЯ ИГРА</b>: Масштабируй свой бренд и мышление.</p>
                     </li>
                 </ul>
-
                 <div class="mt-8 p-6 bg-brand-bg border-l-4 border-brand-rose rounded-r-xl">
                     <p class="italic text-gray-600 font-serif text-lg">
                         "Верю, что личный бренд начинается не с визуала, а с внутренней опоры и честности с собой."
                     </p>
                 </div>
-
                 <div class="mt-10">
                     <a href="#payment" class="inline-block bg-brand-dark text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-brand-rose transition-all duration-300">
                         Иду к тебе на курс
@@ -320,9 +277,7 @@
             <h2 class="font-serif text-4xl lg:text-5xl font-bold text-center mb-16 reveal">
                 Что будет в курсе?
             </h2>
-
             <div class="space-y-6">
-                <!-- Level 1 -->
                 <div class="reveal group bg-brand-bg hover:bg-white p-6 rounded-2xl border border-transparent hover:border-brand-primary/30 transition-all duration-300 shadow-sm hover:shadow-lg">
                     <div class="flex flex-col md:flex-row gap-4">
                         <div class="flex-shrink-0">
@@ -334,8 +289,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Level 2 -->
                 <div class="reveal group bg-brand-bg hover:bg-white p-6 rounded-2xl border border-transparent hover:border-brand-primary/30 transition-all duration-300 shadow-sm hover:shadow-lg">
                     <div class="flex flex-col md:flex-row gap-4">
                         <div class="flex-shrink-0">
@@ -347,8 +300,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Level 3 -->
                 <div class="reveal group bg-brand-bg hover:bg-white p-6 rounded-2xl border border-transparent hover:border-brand-primary/30 transition-all duration-300 shadow-sm hover:shadow-lg">
                     <div class="flex flex-col md:flex-row gap-4">
                         <div class="flex-shrink-0">
@@ -360,8 +311,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Level 4 -->
                 <div class="reveal group bg-brand-bg hover:bg-white p-6 rounded-2xl border border-transparent hover:border-brand-rose/30 transition-all duration-300 shadow-sm hover:shadow-lg">
                     <div class="flex flex-col md:flex-row gap-4">
                         <div class="flex-shrink-0">
@@ -373,8 +322,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Level 5 -->
                 <div class="reveal group bg-brand-bg hover:bg-white p-6 rounded-2xl border border-transparent hover:border-brand-primary/30 transition-all duration-300 shadow-sm hover:shadow-lg">
                     <div class="flex flex-col md:flex-row gap-4">
                         <div class="flex-shrink-0">
@@ -386,8 +333,6 @@
                         </div>
                     </div>
                 </div>
-                
-                 <!-- Level 6 & 7 (Grouped for brevity visually, but separate in code) -->
                  <div class="grid md:grid-cols-2 gap-6">
                     <div class="reveal bg-brand-bg p-6 rounded-2xl">
                         <span class="inline-block bg-brand-dark text-white text-xs font-bold px-3 py-1 rounded-full mb-3">Уровень 6</span>
@@ -401,7 +346,6 @@
                     </div>
                  </div>
             </div>
-
             <div class="mt-12 text-center reveal">
                 <a href="#payment" class="inline-block bg-brand-dark text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-brand-primary transition-all duration-300 animate-pulse">
                     Хочу на этот курс
@@ -413,50 +357,64 @@
         </div>
     </section>
 
-    <!-- REVIEWS SECTION -->
-    <section class="py-20 bg-brand-bg">
+    <!-- REVIEWS SECTION (NEW CAROUSEL) -->
+    <section class="py-20 bg-brand-bg overflow-hidden">
         <div class="container mx-auto px-6">
             <h2 class="font-serif text-4xl lg:text-5xl font-bold text-center mb-16 reveal">
                 Что говорят участники
             </h2>
             
-            <!-- Masonry Grid for Reviews -->
-            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-                <!-- Review 1 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_01.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
-                </div>
-                <!-- Review 2 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_02.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
-                </div>
-                <!-- Review 3 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_03.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
-                </div>
-                <!-- Review 4 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_04.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
-                </div>
-                <!-- Review 5 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_05.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
-                </div>
-                <!-- Review 6 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_07.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
-                </div>
-                <!-- Review 7 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_010.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
-                </div>
-                <!-- Review 8 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_011.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
-                </div>
-                <!-- Review 9 -->
-                <div class="reveal break-inside-avoid">
-                    <img src="review_012.jpg" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" alt="Отзыв">
+            <div class="relative group max-w-7xl mx-auto">
+                <!-- Navigation Buttons -->
+                <button onclick="scrollReviews('left')" aria-label="Предыдущий отзыв" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-2 lg:-ml-12 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-brand-dark/5 hover:bg-brand-rose/20 text-brand-dark backdrop-blur-sm transition-all duration-300 opacity-50 hover:opacity-100 hover:scale-110 focus:outline-none">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <button onclick="scrollReviews('right')" aria-label="Следующий отзыв" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-2 lg:-mr-12 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-brand-dark/5 hover:bg-brand-rose/20 text-brand-dark backdrop-blur-sm transition-all duration-300 opacity-50 hover:opacity-100 hover:scale-110 focus:outline-none">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Slider Track -->
+                <div id="reviews-slider" class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth pb-4 px-1">
+                    
+                    <!-- Review Items (All images you provided) -->
+                    <!-- Mobile: min-w-full (1 per screen) / MD: min-w-[48%] (2 per) / LG: min-w-[31%] (3 per) -->
+                    
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_01.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
+                    
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_02.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
+
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_03.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
+
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_04.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
+
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_05.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
+
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_07.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
+
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_010.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
+
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_011.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
+
+                    <div class="min-w-full md:min-w-[48%] lg:min-w-[32%] snap-center">
+                        <img src="review_012.jpg" class="w-full h-auto rounded-2xl shadow-md" alt="Отзыв">
+                    </div>
                 </div>
             </div>
         </div>
@@ -464,11 +422,7 @@
 
     <!-- FOOTER / FINAL CTA -->
     <footer id="payment" class="relative py-24 bg-brand-dark text-white overflow-hidden">
-        <!-- Background Img Overlay -->
-        <div class="absolute inset-0 z-0 opacity-20">
-            <!-- Using the casual selfie pic_003.JPGfor a personal goodbye feel -->
-            <img src="pic_004.JPG" class="w-full h-full object-cover blur-sm" alt="Background">
-        </div>
+        <img src="pic_004.JPG" class="absolute inset-0 w-full h-full object-cover blur-sm opacity-20 z-0" alt="Background">
         <div class="absolute inset-0 bg-black/60 z-0"></div>
 
         <div class="container mx-auto px-6 relative z-10 text-center">
@@ -476,20 +430,17 @@
                 Разреши себе проявляться <br>так, как хочешь ты,<br>
                 <span class="text-brand-rose italic">а не как диктует общество</span>
             </h2>
-
             <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl inline-block max-w-lg w-full border border-white/20">
                 <p class="text-gray-300 mb-2">Стоимость участия</p>
                 <div class="flex justify-center items-center gap-4 mb-8">
                     <span class="text-gray-400 text-2xl line-through decoration-brand-rose">3490 грн</span>
                     <span class="text-5xl font-bold text-glow">390 грн</span>
                 </div>
-                
                 <button class="w-full bg-brand-rose text-brand-dark py-4 rounded-full text-xl font-bold shadow-lg hover:bg-white hover:text-brand-rose transition-all duration-300 transform hover:scale-105">
                     Оплатить и получить доступ
                 </button>
                 <p class="mt-4 text-xs text-gray-400">Безопасная оплата картой любого банка</p>
             </div>
-
             <div class="mt-16 flex justify-center gap-6 text-gray-400">
                 <a href="#" class="hover:text-white transition"><i class="fab fa-instagram text-2xl"></i></a>
                 <a href="#" class="hover:text-white transition"><i class="fab fa-telegram text-2xl"></i></a>
@@ -498,8 +449,9 @@
         </div>
     </footer>
 
-    <!-- SCROLL ANIMATION SCRIPT -->
+    <!-- SCRIPTS -->
     <script>
+        // Reveal animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -512,8 +464,19 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        // Trigger once on load
         reveal();
+
+        // Reviews Carousel Logic
+        function scrollReviews(direction) {
+            const container = document.getElementById('reviews-slider');
+            const scrollAmount = container.clientWidth * 0.8; // Scroll 80% of width
+            
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 </html>
