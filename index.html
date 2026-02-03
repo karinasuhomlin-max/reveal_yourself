@@ -73,7 +73,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Glass Card Styles - Mobile Transparency Fix */
+        /* Glass Card Styles */
         .glass-dark {
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
@@ -564,7 +564,8 @@
         }
 
         // --- FORM LOGIC ---
-        const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwRwKHpu_NzANR0mEldAY3cssFLMcBhKnKUnalUqqY4cvWkv17NW-i1MbNHpmWX9Uae/exec'; // <--- REPLACE THIS
+        // INSERT YOUR WEBHOOK URL HERE FROM GOOGLE APPS SCRIPT
+        const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycby8NvoSOzVIdlBMaNDvbXQWHza2g-C6D9_Y_MrqI9CJI05g3TNqUYhMycB3SpVw62xI/exec'; 
         
         const modal = document.getElementById('leadModal');
         const backdrop = document.getElementById('modalBackdrop');
@@ -651,10 +652,12 @@
                 submitBtn.disabled = true;
                 submitBtn.innerText = "Отправка...";
 
+                // Add status "Proceeded to Payment" here
                 const formData = {
                     name: nameValue,
                     phone: iti.getNumber(),
-                    country: iti.getSelectedCountryData().name
+                    country: iti.getSelectedCountryData().name,
+                    status: "Перешел к оплате" 
                 };
 
                 fetch(WEBHOOK_URL, {
@@ -667,10 +670,9 @@
                     submitBtn.innerText = "Успешно!";
                     setTimeout(() => {
                         closeModal();
-                        // Redirect Logic:
+                        // !!! WAYFORPAY REDIRECT !!!
                         window.location.href = "https://secure.wayforpay.com/payment/reveal-yourself";
-                        alert("Данные отправлены. Здесь должен быть переход на оплату.");
-                    }, 1000);
+                    }, 500);
                 })
                 .catch(error => {
                     console.error('Error:', error);
