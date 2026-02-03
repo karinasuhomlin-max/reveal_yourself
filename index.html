@@ -73,7 +73,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Glass Card Styles */
+        /* Glass Card Styles - Mobile Transparency Fix */
         .glass-dark {
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
@@ -668,7 +668,7 @@
                     setTimeout(() => {
                         closeModal();
                         // Redirect Logic:
-                        // window.location.href = "PAYMENT_URL";
+                        window.location.href = "https://secure.wayforpay.com/payment/reveal-yourself";
                         alert("Данные отправлены. Здесь должен быть переход на оплату.");
                     }, 1000);
                 })
